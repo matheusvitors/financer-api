@@ -4,7 +4,6 @@
 		"target": "ES2022",
 		"module": "node16",
 		"lib": ["ES2023"],
-		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"outDir": "./dist",

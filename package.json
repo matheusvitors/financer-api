@@ -1,25 +1,32 @@
 {
-  "name": "financas-api",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.19.2"
-  },
-  "devDependencies": {
-    "dotenv-cli": "^7.4.2",
-    "nodemon": "^3.1.0",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "tsup": "^8.0.2",
-    "tsx": "^4.11.0",
-    "typescript": "^5.4.5"
-  }
+	"name": "financas-api",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"start": "node dist/server.js",
+		"build": "tsup src",
+		"dev": "dotenv -e .env nodemon src/server.ts",
+		"upgrade": "ncu -u && npm i",
+		"test": "dotenv -e .env.tests vitest run --coverage",
+		"test:watch": "vitest --ui"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.17",
+		"@types/express": "^4.17.21",
+		"dotenv-cli": "^7.4.2",
+		"nodemon": "^3.1.0",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
+		"tsup": "^8.0.2",
+		"tsx": "^4.11.0",
+		"typescript": "^5.4.5"
+	}
 }
