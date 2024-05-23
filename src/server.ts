@@ -8,7 +8,7 @@ const app = express();
 app.get('/', (request: Request, response: Response) => {
 	return response.status(200).send({
 		name: 'Finanças',
-		teste: 1,
+		teste: 2,
 		version: project.version
 	});
 });
