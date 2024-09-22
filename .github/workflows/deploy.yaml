@@ -15,11 +15,11 @@ jobs:
                 password: ${{ secrets.PASSWORD }}
                 port: ${{ secrets.PORT }}
                 script: |
-                      cd /var/www/financas-api
+                      cd /var/www/financer-api
                       git pull origin main
                       npm i
                       npm run build
-                      pm2 restart financas-api
+                      pm2 restart financer-api
 
 
 
