@@ -18,6 +18,8 @@ jobs:
                       cd /var/www/financer-api
                       git pull origin main
                       npm i
+                      npx prisma migrate deploy
+                      npx prisma generate
                       npm run build
                       pm2 restart financer-api
 
