@@ -21,13 +21,6 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v4
         - name: Install Dependences
-          run: |
-            if [ -e pnpm-lock.yaml ]; then
-            pnpm install
-            elif [ -e package-lock.json ]; then
-            npm ci
-            else
-            npm i
-            fi
+          run: npm ci
         - name: Run Tests
           run: npm run test:ci
