@@ -39,11 +39,11 @@ describe('Authorization', () => {
 		expect(response.status).toEqual(401);
 	});
 
-	it.skip('should authorize a user', async () => {
+	it('should authorize a user', async () => {
 		const token = sign({ id: 'abc' }, SECRET || 'thisisascret');
 
 		const response = await supertest(app)
-		.get('/ativos')
+		.get('/users')
 		.set({ authorization: `Bearer ${token}` });
 
 		expect(response.status).toEqual(200);
