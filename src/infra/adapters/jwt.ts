@@ -1,6 +1,7 @@
+import Jwt, { JwtPayload } from "jsonwebtoken";
+import ms from "ms";
 import { JwtError } from "@/application/errors";
 import { JWT_EXPIRE, SECRET } from "@/infra/config/environment";
-import Jwt, { JwtPayload } from "jsonwebtoken";
 
 interface JwtEncodeParams {
 	payload: any;
@@ -14,7 +15,8 @@ export const jwt = {
 				return Jwt.sign(
 					{ payload },
 					SECRET,
-					{ expiresIn: expiration || JWT_EXPIRE });
+					{expiresIn: JWT_EXPIRE as ms.StringValue}
+				);
 			} catch (error: any) {
 				throw new JwtError(error.message);
 			}

@@ -25,7 +25,7 @@ describe('Authorization', () => {
 
 	it('should deny authorization if not pass the token', async () => {
 		const response = await supertest(app)
-		.get('/users');
+		.get('/test');
 
 		expect(response.status).toEqual(401);
 	});
@@ -33,17 +33,17 @@ describe('Authorization', () => {
 	it('should deny authorization if access type is wrong', async () => {
 		const token = jwt.encode({payload: { teste: true }});
 		const response = await supertest(app)
-		.get('/users')
+		.get('/test')
 		.set({ authorization: `token ${token}` });
 
 		expect(response.status).toEqual(401);
 	});
 
-	it.skip('should authorize a user', async () => {
+	it('should authorize a user', async () => {
 		const token = sign({ id: 'abc' }, SECRET || 'thisisascret');
 
 		const response = await supertest(app)
-		.get('/ativos')
+		.get('/users')
 		.set({ authorization: `Bearer ${token}` });
 
 		expect(response.status).toEqual(200);
@@ -57,7 +57,7 @@ describe('Authorization', () => {
 
 		const token = 'abc';
 		const response = await supertest(app)
-		.get('/users')
+		.get('/test')
 		.set({ authorization: `Bearer ${token}` });
 
 		expect(response.statusCode).toEqual(401);
@@ -71,7 +71,7 @@ describe('Authorization', () => {
 
 		const token = 'abc';
 		const response = await supertest(app)
-		.get('/ativos')
+		.get('/test')
 		.set({ authorization: `Bearer ${token}` });
 
 		expect(response.status).toEqual(401);
@@ -86,29 +86,13 @@ describe('Authorization', () => {
 
 		const token = 'abc';
 		const response = await supertest(app)
-		.get('/users')
+		.get('/test')
 		.set({ authorization: `Bearer ${token}` });
 
 		expect(response.status).toEqual(401);
 		// expect(response.body.message).toEqual('Jwt inativo.');
 
 	});
-
-	// it('should deny authorization if user try to delete another user', async () => {
-	// 	const token = sign({ id: 'abc' }, SECRET || 'thisisascret');
-
-	// 	vi.mocked(jwt.verify).mockImplementation(() => {
-	// 		return { payload: { id: 'abc' }}
-	// 	})
-
-	// 	const response = await supertest(app)
-	// 	.delete('/users/cde')
-	// 	.set({ authorization: `Bearer ${token}` });
-
-	// 	expect(response.status).toEqual(401);
-	// 	expect(response.body.message).toEqual('Você não está autorizado a excluir este usuário.');
-
-	// });
 
 	it('should throw an error when authorizing the user', async () => {
 		vi.mocked(jwt.verify).mockImplementation(() => {
@@ -118,7 +102,7 @@ describe('Authorization', () => {
 		const token = jwt.encode({ payload: { teste: true }});
 
 		const response = await supertest(app)
-		.get('/users')
+		.get('/test')
 		.set({ authorization: `Bearer ${token}` });
 
 		expect(response.status).toEqual(500);

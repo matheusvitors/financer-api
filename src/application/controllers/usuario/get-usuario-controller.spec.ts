@@ -17,7 +17,7 @@ describe('Usuario List Controller', () => {
 	})
 
 	it('should list users', async () => {
-		const response = await getUsuarioController({repository, id: ''});
+		const response = await getUsuarioController({repository, id: 'abc'});
 		expect(response.status).toEqual(200)
 	});
 
