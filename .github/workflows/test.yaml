@@ -19,7 +19,7 @@ jobs:
         - name: Checkout Repository
           uses: actions/checkout@v2
         - name: Setup Node
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v4
         - name: Install Dependences
           run: npm ci
         - name: Run Tests
