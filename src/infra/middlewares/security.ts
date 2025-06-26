@@ -12,7 +12,7 @@ export const security =  async (request: Request, response: Response, next: Next
 			throw new Error('Empty ip');
 		}
 		await limiter.consume(request.ip, 1);
-		return next();
+		next();
 	} catch (error) {
 		return response.status(429).json({
 			message: 'Too many requests.',

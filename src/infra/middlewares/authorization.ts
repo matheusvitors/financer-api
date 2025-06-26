@@ -9,7 +9,7 @@ export const authorization = async (request: Request, response: Response, next: 
 		const unprotectedPaths = ['/', '/login'];
 
 		if(unprotectedPaths.includes(request.path) || process.env.AUTHENTICATION === 'false') {
-			return next();
+			next();
 		}
 
 		const accessType = request.headers['authorization']?.split(' ')[0];
@@ -28,7 +28,7 @@ export const authorization = async (request: Request, response: Response, next: 
 		}
 
 		jwt.verify(token);
-		return next();
+		next();
 
 	} catch (error: any) {
 		let status = 500;
