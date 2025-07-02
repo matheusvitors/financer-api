@@ -16,6 +16,7 @@ jobs:
                 port: ${{ secrets.PORT }}
                 script: |
                       cd /var/www/financer-api
+                      git stash
                       git pull origin main
                       npm i
                       npx prisma migrate deploy

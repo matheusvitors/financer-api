@@ -1,22 +1,18 @@
-import express, {Response, Request} from "express";
+import express from "express";
 import 'dotenv/config';
-import project from '../package.json';
-
+import helmet from "helmet";
+import { middlewares } from "@/infra/middlewares";
+import { routes } from "@/routes";
 
 const app = express();
 
-app.get('/', (request: Request, response: Response) => {
-	return response.status(200).send({
-		name: 'Finanças',
-		teste: 2,
-		version: project.version
-	});
-});
-
+app.use(helmet());
+app.use(middlewares);
+app.use(routes);
 
 if(process.env.NODE_ENV !== "tests") {
-	app.listen(7011, function (){
-		console.log("Tradx running on port %d", 7011);
+	app.listen(process.env.PORT || 8000, function (){
+		console.log("Financer running on port %d", 7011);
 	});
 }
 
