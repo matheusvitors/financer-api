@@ -1,7 +1,7 @@
 name: e2e Tests
 on:
   workflow_run:
-    workflows: [Unit Tests]
+    workflows: [Run Unit Tests]
     types: [completed]
     # push:
     #     branches:
