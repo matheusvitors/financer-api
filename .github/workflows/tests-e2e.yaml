@@ -1,8 +1,9 @@
 name: e2e Tests
 on:
   workflow_run:
-    workflows: [Run Unit Tests]
-    types: [completed]
+    workflows: [Unit Test]
+    types:
+      - completed
     # push:
     #     branches:
     #         - main
