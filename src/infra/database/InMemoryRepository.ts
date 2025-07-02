@@ -51,9 +51,8 @@ export class InMemoryRepository<T extends Entity> implements Repository<T> {
 		return result.length > 0 ? result : null;
 	}
 
-	async create(entity: any): Promise<T> {
+	async create(entity: any): Promise<void> {
 		this.data.push(entity);
-		return entity;
 	}
 
 	async edit(entity: any): Promise<T | null> {
