@@ -9,7 +9,7 @@ on:
     #         - dev
     #         - ci-mysql
 jobs:
-  tests:
+  on-success:
     runs-on: ubuntu-latest
 
     services:
