@@ -7,9 +7,10 @@
 		"build": "tsup src",
 		"dev": "dotenv -e .env nodemon src/server.ts",
 		"upgrade": "ncu -u && pnpm i",
-		"test": "npm run migrate && dotenv -e .env.test vitest run --coverage",
+		"test": "dotenv -e .env.test vitest run --coverage",
 		"test:watch": "vitest --ui",
-		"test:ci": "vitest",
+		"test:unit": "vitest run --dir src",
+		"test:e2e": "vitest run --dir __tests__",
 		"migrate": "npx prisma migrate dev"
 	},
 	"keywords": [],

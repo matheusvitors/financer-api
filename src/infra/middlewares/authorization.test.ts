@@ -43,11 +43,10 @@ describe('Authorization', () => {
 		const token = sign({ id: 'abc' }, SECRET || 'thisisascret');
 
 		const response = await supertest(app)
-		.get('/users')
+		.get('/test')
 		.set({ authorization: `Bearer ${token}` });
 
 		expect(response.status).toEqual(200);
-
 	});
 
 	it('should deny authorization if you pass an invalid token', async () => {

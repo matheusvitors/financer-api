@@ -16,13 +16,13 @@ export const usuarioPrismaRepository: Repository<Usuario> = {
 	filter: async (params: any): Promise<Usuario[] | null> => {
 		throw new Error("Function not implemented.");
 	},
-	create: async (data: any): Promise<Usuario> => {
-		throw new Error("Function not implemented.");
+	create: async (data: Usuario): Promise<void> => {
+		await databaseClient.usuario.create({ data })
 	},
 	edit: async (data: any): Promise<Usuario | null> => {
 		throw new Error("Function not implemented.");
 	},
 	remove: async (id: string): Promise<void> => {
-		throw new Error("Function not implemented.");
+		await databaseClient.usuario.delete({ where: {id} })
 	}
 }

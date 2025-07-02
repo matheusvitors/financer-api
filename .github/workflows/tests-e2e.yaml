@@ -1,0 +1,29 @@
+name: e2e Tests
+on:
+    push:
+        branches:
+            - main
+            - dev
+            - ci-mysql
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    env:
+        NODE_ENV: tests
+        PORT: 8080
+        DATABASE_URL: "mysql://test:test@localhost:0000/test"
+        AUTHENTICATION: true
+        SECRET: testsecret
+        JWT_EXPIRE: 15m
+        NEW_USERS: true
+    steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+        - name: Setup Node
+          uses: actions/setup-node@v4
+        - name: Install Dependences
+          run: npm ci
+        - name: Run Migration
+          run: npm run migrate
+        - name: Run Tests
+          run: npm run test:e2e

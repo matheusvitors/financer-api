@@ -1,4 +1,4 @@
-name: Tests
+name: Unit Tests
 on:
     push:
         branches:
@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
         NODE_ENV: tests
-        PORT: 7005
+        PORT: 8080
         DATABASE_URL: "mysql://test:test@localhost:0000/test"
         AUTHENTICATION: true
-        SECRET: testsecret
-        JWT_EXPIRE: 15m
+        SECRET: test
+        JWT_EXPIRE: 1h
         NEW_USERS: true
     steps:
         - name: Checkout Repository
@@ -23,4 +23,4 @@ jobs:
         - name: Install Dependences
           run: npm ci
         - name: Run Tests
-          run: npm run test:ci
+          run: npm run test:unit

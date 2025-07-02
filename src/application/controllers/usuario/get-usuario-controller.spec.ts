@@ -3,7 +3,7 @@ import { InMemoryRepository } from "@/infra/database/InMemoryRepository";
 import { Usuario } from "@/core/models";
 import { getUsuarioController } from "@/application/controllers/usuario";
 
-describe('Usuario List Controller', () => {
+describe('Get List Controller', () => {
 	const repository = new InMemoryRepository<Usuario>();
 
 	beforeAll(() => {
@@ -16,9 +16,14 @@ describe('Usuario List Controller', () => {
 		})
 	})
 
-	it('should list users', async () => {
+	it('should get the user', async () => {
 		const response = await getUsuarioController({repository, id: 'abc'});
 		expect(response.status).toEqual(200)
+	});
+
+	it('should not find the user', async () => {
+		const response = await getUsuarioController({repository, id: 'xyz'});
+		expect(response.status).toEqual(404)
 	});
 
 	it('should return 500 if have error server', async () => {
