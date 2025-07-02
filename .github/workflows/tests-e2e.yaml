@@ -21,7 +21,7 @@ jobs:
     env:
         NODE_ENV: tests
         PORT: 8080
-        DATABASE_URL: "mysql://localhost:password@localhost:0000/e2e_test"
+        DATABASE_URL: "mysql://root:password@localhost:3306/e2e_test"
         AUTHENTICATION: true
         SECRET: testsecret
         JWT_EXPIRE: 15m
