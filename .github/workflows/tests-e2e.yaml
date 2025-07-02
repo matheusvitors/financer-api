@@ -8,10 +8,20 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: e2e_test
+          MYSQL_ROOT_PASSWORD: password
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     env:
         NODE_ENV: tests
         PORT: 8080
-        DATABASE_URL: "mysql://test:test@localhost:0000/test"
+        DATABASE_URL: "mysql://localhost:password@localhost:0000/e2e_test"
         AUTHENTICATION: true
         SECRET: testsecret
         JWT_EXPIRE: 15m
